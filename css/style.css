@@ -53,7 +53,7 @@ section {
 /* Header */
 header {
     background: var(--white);
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -67,28 +67,54 @@ header .container {
 }
 
 .logo {
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--primary);
     text-decoration: none;
 }
 
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+/* Nav Menu */
 nav ul {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-dark);
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.95rem;
     transition: var(--transition);
 }
 
 nav a:hover {
     color: var(--primary);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: var(--transition);
 }
 
 /* Hero */
@@ -275,13 +301,46 @@ footer a:hover {
 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2rem;
+@media (max-width: 992px) {
+    header .container {
+        padding: 0 1rem;
     }
+
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--white);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: 0.4s ease;
+        padding: 5rem 2rem;
+        z-index: 1000;
+    }
+
+    nav.active {
+        right: 0;
+    }
+
     nav ul {
-        display: none; /* In a real app we'd have a menu, but for KYC a clean desktop view is fine or we can keep it simple */
+        flex-direction: column;
+        gap: 2rem;
     }
+
+    nav a {
+        font-size: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
     .grid {
         grid-template-columns: 1fr;
     }

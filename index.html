@@ -33,8 +33,16 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo">ArtesanalBolsas</a>
-            <nav>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="ArtesanalBolsas Logo">
+                ArtesanalBolsas
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#aprender">O que você recebe</a></li>
                     <li><a href="#como-funciona">Como funciona</a></li>
@@ -243,5 +251,20 @@
         </div>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
